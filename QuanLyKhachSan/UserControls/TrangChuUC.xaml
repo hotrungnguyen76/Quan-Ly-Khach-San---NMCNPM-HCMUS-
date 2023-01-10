@@ -72,6 +72,7 @@
                 <TabItem Header="Tất cả"></TabItem>
                 <TabItem Header="Sẵn sàng"></TabItem>
                 <TabItem Header="Đang có khách"></TabItem>
+                <TabItem Header="Đặt trước"></TabItem>
             </TabControl>
         </materialDesign:Card>
 

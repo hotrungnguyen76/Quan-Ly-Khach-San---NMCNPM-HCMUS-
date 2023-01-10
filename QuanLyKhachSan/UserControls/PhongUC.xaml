@@ -14,7 +14,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <DockPanel Grid.Row="0"
                            RenderTransformOrigin="0.624,0.41">
@@ -31,7 +31,7 @@
                                 DockPanel.Dock="Right">
 
                         <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                Width="100"
+                                Width="105"
                                 Height="25"
                                 FontSize="12"
                                 Margin="5,5,5,0"
@@ -69,11 +69,13 @@
                 <ListView Grid.Row="1"
                           ItemsSource="{Binding PhongList}"
                           SelectedItem="{Binding SelectedRoom, Mode=OneWayToSource}"
-                          HorizontalContentAlignment="Center">
+                          HorizontalContentAlignment="Center"
+                          Height="1000"
+                          Width="Auto">
 
                     <ListView.View>
 
-                        <GridView >
+                        <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding MaPhong}"
                                             Header="Số phòng" />
 
@@ -89,11 +91,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
-
-
             </Grid>
-
         </materialDesign:Card>
     </Grid>
 </UserControl>

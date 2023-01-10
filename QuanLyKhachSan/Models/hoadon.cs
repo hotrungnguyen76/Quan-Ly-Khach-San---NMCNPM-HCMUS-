@@ -17,23 +17,19 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public hoadon()
         {
-            this.hoadon_phieuthue = new HashSet<hoadon_phieuthue>();
+            this.chitiethoadons = new HashSet<chitiethoadon>();
         }
     
-        public long MaHoaDon { get; set; }
+        public int MaHoaDon { get; set; }
+        public Nullable<int> MaPhieuThue { get; set; }
         public Nullable<int> SoNgayThue { get; set; }
         public Nullable<float> TongTien { get; set; }
-        public Nullable<int> PhuThu { get; set; }
         public Nullable<System.DateTime> NgayThanhToan { get; set; }
-        public int MaKH { get; set; }
-        public int MaPhong { get; set; }
-        public int MaNV { get; set; }
+        public string NVTao { get; set; }
     
-        public virtual khachhang khachhang { get; set; }
-        public virtual nguoidung nguoidung { get; set; }
-        public virtual phong phong { get; set; }
-        public virtual phuthu phuthu1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hoadon_phieuthue> hoadon_phieuthue { get; set; }
+        public virtual ICollection<chitiethoadon> chitiethoadons { get; set; }
+        public virtual phieuthue phieuthue { get; set; }
+        public virtual taikhoan taikhoan { get; set; }
     }
 }

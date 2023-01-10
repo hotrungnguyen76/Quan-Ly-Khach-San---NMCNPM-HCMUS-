@@ -13,6 +13,7 @@ namespace QuanLyKhachSan.ViewModels
 {
     class KhachHangVM : BaseViewModel
     {
+       
         public ICommand DeleteCommand { get; set; }
         public ICommand AddCommand { get; set; }
 
@@ -23,6 +24,24 @@ namespace QuanLyKhachSan.ViewModels
         private khachhang _SelectedItem;
 
         public khachhang SelectedItem { get => _SelectedItem; set { _SelectedItem = value; OnPropertyChanged(); } }
+
+        private String _SearchedCustomer;
+
+        public String SearchedCustomer { get => _SearchedCustomer; set { 
+                _SearchedCustomer = value; 
+                OnPropertyChanged();
+                if (_SearchedCustomer == "")
+                {
+                    KhachHangList = new ObservableCollection<khachhang>(DataProvider.Ins.DB.khachhang);
+                }
+                else
+                {
+                    
+                    var NewList = from p in DataProvider.Ins.DB.khachhang where p.TenKH == SearchedCustomer select p;
+                    KhachHangList = new ObservableCollection<khachhang>(NewList);
+                }
+            } 
+        }
 
         public KhachHangVM()
         {

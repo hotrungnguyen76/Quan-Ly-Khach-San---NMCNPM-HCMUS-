@@ -59,16 +59,7 @@
                     <ColumnDefinition Width="70"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0"
-                       Content="Tình trạng"></Label>
-                <ComboBox Grid.Column="1"
-                          Name="TinhTrangcb"
-                          Width="100"
-                          
-                          SelectedValue="{Binding TinhTrang, Mode=TwoWay}">
-                    <ComboBoxItem Content="Sẵn sàng"></ComboBoxItem>
-                    <ComboBoxItem Content="Đang có khách"></ComboBoxItem>
-                </ComboBox>
+                
             </Grid>
 
             <StackPanel Orientation="Horizontal"

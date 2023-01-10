@@ -17,13 +17,21 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public taikhoan()
         {
-            this.nguoidung = new HashSet<nguoidung>();
+            this.hoadons = new HashSet<hoadon>();
+            this.phieuthues = new HashSet<phieuthue>();
         }
     
         public string Username { get; set; }
         public string Password { get; set; }
+        public string TenNV { get; set; }
+        public Nullable<long> CMND { get; set; }
+        public string SDT { get; set; }
+        public string DiaChi { get; set; }
+        public string ChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidung { get; set; }
+        public virtual ICollection<hoadon> hoadons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<phieuthue> phieuthues { get; set; }
     }
 }

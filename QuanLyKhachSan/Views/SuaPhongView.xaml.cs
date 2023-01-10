@@ -50,8 +50,7 @@ namespace QuanLyKhachSan.Views
         public String _LoaiPhong;
         public String LoaiPhong { get => _LoaiPhong; set { _LoaiPhong = value; OnPropertyChanged(); } }
 
-        public String _TinhTrang;
-        public String TinhTrang { get => _TinhTrang; set { _TinhTrang = value; OnPropertyChanged(); } }
+        
         public SuaPhongView()
         {
             InitializeComponent();
@@ -69,7 +68,7 @@ namespace QuanLyKhachSan.Views
 
             MaPhong = SelectedRoom.MaPhong.ToString();
             LoaiPhong = SelectedRoom.LoaiPhong;
-            TinhTrang = SelectedRoom.TinhTrang;
+           
             
             LoaiPhongList = new ObservableCollection<String>(from p in DataProvider.Ins.DB.loaiphong select p.LoaiPhong1);
 
@@ -84,12 +83,12 @@ namespace QuanLyKhachSan.Views
             }, (p) =>
             {
                 //var room = DataProvider.Ins.DB.phong.Where(x => x.MaPhong == SelectedRoom.MaPhong).SingleOrDefault();
-                if (SelectedRoom.MaPhong != Int32.Parse(MaPhong) || SelectedRoom.LoaiPhong != LoaiPhongcb.Text || SelectedRoom.TinhTrang != TinhTrangcb.Text)
+                if (SelectedRoom.MaPhong != Int32.Parse(MaPhong) || SelectedRoom.LoaiPhong != LoaiPhongcb.Text )
                 {
                     phong newObj = new phong();
                     newObj.MaPhong = Int32.Parse(MaPhong);
                     newObj.LoaiPhong = LoaiPhongcb.Text;
-                    newObj.TinhTrang = TinhTrangcb.Text;
+                    
 
                     DataProvider.Ins.DB.phong.Add(newObj);
                     DataProvider.Ins.DB.phong.Remove(SelectedRoom);

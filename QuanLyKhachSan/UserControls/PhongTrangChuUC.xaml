@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:QuanLyKhachSan.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-             Height="169.6"
-             Width="170">
+             Height="137.333"
+             Width="169.333">
     <Canvas>
         <materialDesign:Card Width="170">
             <Grid>
@@ -16,7 +16,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+
                     <!--<RowDefinition Height="Auto" />-->
                 </Grid.RowDefinitions>
 
@@ -24,11 +24,11 @@
                         Grid.Row="0"
                         CornerRadius="5"
                         Background="{Binding InfoAreaBackground}">
-                    <DockPanel Margin="8 0 8 4">
+                    <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal"
                                     DockPanel.Dock="Left">
                             <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-                                       Margin="0,3,0,0"
+                                       Margin="3,3,0,0"
                                        FontSize="20"
                                        Foreground="White"
                                        Text="Phòng " />
@@ -38,28 +38,19 @@
                                        Foreground="White"
                                        Text="{Binding Phong.MaPhong, Mode=TwoWay}" />
                         </StackPanel>
-                        <Canvas />
-                        <materialDesign:PopupBox Foreground="White"
-                                                 Width="30"
-                                                 Height="24"
-                                                 Margin="0,3,0,0"
-                                                 DockPanel.Dock="Right"
-                                                 VerticalAlignment="Top"
-                                                 HorizontalAlignment="Right">
-                            <ListBox Name="CommandsListbox"
-                                     >
-                                <ListBoxItem Content="Thuê phòng"
-                                             />
-                                <ListBoxItem Content="Thanh toán"
-                                             />
-                                <ListBoxItem Content="" />
+                        
+                            
+                            <TextBlock x:Name="TinhTrangThanhToanTB"
+                                       Foreground="White"
+                                       FontSize="15"
+                                       HorizontalAlignment="Center"
+                                   Margin="0,40,0,0" />
 
-
-                            </ListBox>
-                        </materialDesign:PopupBox>
-
-
-                    </DockPanel>
+                        
+                        
+                    </StackPanel>
+                        
+                        
                 </Border>
 
                 <Separator Grid.Row="1"
@@ -67,10 +58,11 @@
                            Margin="8 0 8 0" />
 
                 <StackPanel Grid.Row="2">
-                    <TextBlock HorizontalAlignment="Center"
+                    <TextBlock Name="TinhTrangPhongTB"
+                        HorizontalAlignment="Center"
                                Margin="0,2,0,2"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"
-                               Text="{Binding Phong.TinhTrang}" />
+                                />
 
                     <!--<StackPanel  Orientation="Horizontal">
 
@@ -85,30 +77,22 @@
                 </StackPanel>
 
 
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            HorizontalAlignment="Center"
-                            FontSize="13"
-                            Padding="3"
-                            Content="Thuê phòng" />
-                    <Button Grid.Column="1"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            HorizontalAlignment="Center"
-                            FontSize="13"
-                            Padding="3"
-                            Content="Thanh toán" />
-                </Grid>
+
             </Grid>
 
         </materialDesign:Card>
         <Canvas.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Show" Command="{Binding Command}"></MenuItem>
+                <MenuItem Header="Thuê phòng"
+                          Command="{Binding RentingCommand}"></MenuItem>
+                <MenuItem Header="Thanh toán"
+                          Command="{Binding PaymentCommand}"></MenuItem>
+                <MenuItem Header="Sẵn sàng"
+                          Command="{Binding ReadyCommand}"></MenuItem>
+                <MenuItem Header="Đang dọn"
+                          Command="{Binding CleaningCommand}"></MenuItem>
+
+
             </ContextMenu>
         </Canvas.ContextMenu>
 

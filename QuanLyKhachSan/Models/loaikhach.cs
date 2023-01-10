@@ -17,13 +17,13 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public loaikhach()
         {
-            this.khachhang = new HashSet<khachhang>();
+            this.khachhangs = new HashSet<khachhang>();
         }
     
         public string LoaiKhach1 { get; set; }
         public Nullable<float> HeSo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<khachhang> khachhang { get; set; }
+        public virtual ICollection<khachhang> khachhangs { get; set; }
     }
 }

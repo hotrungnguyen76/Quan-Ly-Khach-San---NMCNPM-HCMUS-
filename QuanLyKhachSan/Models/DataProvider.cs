@@ -24,11 +24,11 @@ namespace QuanLyKhachSan.Models
             }
         }
 
-        public QLKhachSanEntities2 DB { get; set; }
+        public QLKhachSanEntities16 DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QLKhachSanEntities2();
+            DB = new QLKhachSanEntities16();
         }
     
     }

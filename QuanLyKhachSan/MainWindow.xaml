@@ -89,8 +89,7 @@
                                     BorderBrush="Transparent"
                                     Command="{Binding LoadDashboard}"
                                     CommandParameter="{Binding ElementName=MainContent}"
-                                    MouseEnter="MouseEnter_Btn"
-                                    MouseLeave="MouseLeave_Btn">
+                                   >
 
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -110,7 +109,7 @@
                                     Margin="10,0,10,3"
                                     Background="{StaticResource MaterialDesignDarkBackground}"
                                     BorderBrush="Transparent"
-                                    Command="{Binding LoadBooking}"
+                                    Command="{Binding LoadDatPhong}"
                                     CommandParameter="{Binding ElementName=MainContent}">
 
                                 <Grid>
@@ -150,6 +149,26 @@
                                     Margin="10,0,10,3"
                                     Background="{StaticResource MaterialDesignDarkBackground}"
                                     BorderBrush="Transparent"
+                                    Command="{Binding LoadPhieuThue}"
+                                    CommandParameter="{Binding ElementName=MainContent}">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="90"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <materialDesign:PackIcon Kind="ClipboardMultipleOutline"
+                                                             Margin="0,0,10,0"
+                                                             VerticalAlignment="Center"
+                                                             Grid.Column="0" />
+                                    <TextBlock Grid.Column="1">Phiếu thuê</TextBlock>
+                                </Grid>
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                    Width="auto"
+                                    Margin="10,0,10,3"
+                                    Background="{StaticResource MaterialDesignDarkBackground}"
+                                    BorderBrush="Transparent"
                                     Command="{Binding LoadHistory}"
                                     CommandParameter="{Binding ElementName=MainContent}">
 
@@ -179,7 +198,7 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="90"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Kind="HumanMaleFemale"
+                                    <materialDesign:PackIcon Kind="BadgeAccountHorizontal"
                                                              Margin="0,0,10,0"
                                                              VerticalAlignment="Center"
                                                              Grid.Column="0" />
@@ -192,7 +211,7 @@
                                     Margin="10,0,10,3"
                                     Background="{StaticResource MaterialDesignDarkBackground}"
                                     BorderBrush="Transparent"
-                                    Command="{Binding LoadExtra}"
+                                    Command="{Binding LoadCustom}"
                                     CommandParameter="{Binding ElementName=MainContent}">
 
                                 <Grid>
@@ -200,11 +219,11 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="90"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <materialDesign:PackIcon Kind="NotePlus"
+                                    <materialDesign:PackIcon Kind="CogOutline"
                                                              Margin="0,0,10,0"
                                                              VerticalAlignment="Center"
                                                              Grid.Column="0" />
-                                    <TextBlock Grid.Column="1">Phụ thu</TextBlock>
+                                    <TextBlock Grid.Column="1">Tùy chỉnh</TextBlock>
                                 </Grid>
                             </Button>
 
@@ -240,10 +259,30 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                Text="NCK Hotel"
+                                       FontSize="20"></TextBlock>
+                            <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                    Width="120"
+                                    Margin="0,0,10,0"
+                                    Content="Đặt phòng"
+                                    Command="{Binding DatPhongCommand}"
+                                     />
+                        </Grid>
+                        
 
-                    <TextBlock Text="NCK Hotel"
-                               FontSize="20"
-                               Grid.Row="0"></TextBlock>
+                        <Separator Margin="10" />
+                    </StackPanel>
+
+                    
 
                     <!--Content-->
                     <!--<usercontrols:TrangChuUC Grid.Row="1"></usercontrols:TrangChuUC>-->
@@ -251,6 +290,9 @@
 
                     <UserControl Grid.Row="1"
                                  Name="MainContent"
+                                 Height="Auto"
+                                 
+                                 VerticalAlignment="Top"
                                  Content="{Binding SelectedContentVM}" />
 
 

@@ -44,6 +44,58 @@ namespace QuanLyKhachSan.ViewModels
         public PhongVM()
         {
             PhongList = new ObservableCollection<phong>(from p in DataProvider.Ins.DB.phong orderby p.MaPhong select p);
+            DateTime Today = DateTime.Today;
+            foreach (var Phong in PhongList)
+            {
+                String TinhTrangPhong;
+                var checkTinhTrangPhong = DataProvider.Ins.DB.chitietphieuthue.Where(pt => pt.MaPhong == Phong.MaPhong && pt.NgayThue < Today && pt.NgayTraPhong > Today);
+                if (checkTinhTrangPhong.Count() > 0)
+                {
+                    TinhTrangPhong = "Đang có khách";
+                    
+                }
+                else
+                {
+                    DateTime CurrentTime = DateTime.Now;
+                    DateTime CompareTime = DateTime.Today.AddHours(12D);
+                    if (CurrentTime >= CompareTime) // Nếu đã qua 12h
+                    {
+                        var CheckInToday = DataProvider.Ins.DB.chitietphieuthue.Where(pt => pt.MaPhong == Phong.MaPhong && pt.NgayThue == Today);
+                        if (CheckInToday.Count() > 0) // Đã qua 12h, nếu có khách đặt phòng hôm nay...
+                        {
+                            TinhTrangPhong = "Đang có khách";
+                        }
+                        else // Nếu không có khách nào đặt hôm nay
+                        {
+                            TinhTrangPhong = "Sẵn sàng"; 
+                        }
+                    }
+                    else // Nếu chưa qua 12h
+                    {
+                        var CheckOutToday = DataProvider.Ins.DB.chitietphieuthue.Where(pt => pt.MaPhong == Phong.MaPhong && pt.NgayTraPhong == Today);
+                        if (CheckOutToday.Count() > 0) // Khách cũ checkout hôm nay, chưa qua 12h, khách vẫn ở trong phòng
+                        {
+                            TinhTrangPhong = "Đang có khách";
+                        }
+                        else 
+                        {
+                            var CheckInToday = DataProvider.Ins.DB.chitietphieuthue.Where(pt => pt.MaPhong == Phong.MaPhong && pt.NgayThue == Today);
+                            if (CheckInToday.Count() > 0) // Nếu phòng có khách đặt hôm nay
+                            {
+                                TinhTrangPhong = "Đặt trước";
+                            }
+                            else
+                            {
+                                TinhTrangPhong = "Sẵn sàng";
+                            }
+                            
+                        }
+                    }
+                }
+                DataProvider.Ins.DB.phong.Where(p => p.MaPhong == Phong.MaPhong).First().TinhTrang = TinhTrangPhong;
+            }
+            DataProvider.Ins.DB.SaveChanges();
+
             EditCommand = new RelayCommand<phong>((p) => { return p == null ? false : true; }, (p) =>
             {
                 SuaPhongView EditWindow = new SuaPhongView(p);

@@ -28,17 +28,5 @@ namespace QuanLyKhachSan
             this.DataContext = new MainViewModel();
            
         }
-
-        private void MouseEnter_Btn(object sender, MouseEventArgs e)
-        {
-            Btn1.Background = Brushes.White;
-            Btn1.Foreground = Brushes.Black;
-        }
-
-        private void MouseLeave_Btn(object sender, MouseEventArgs e)
-        {
-            Btn1.Background = Brushes.Black;
-            Btn1.Foreground = Brushes.White;
-        }
     }
 }

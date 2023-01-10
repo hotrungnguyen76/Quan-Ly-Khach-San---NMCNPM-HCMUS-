@@ -63,53 +63,40 @@ namespace QuanLyKhachSan.Views
             AddCommand = new RelayCommand<khachhang>((p) =>
             {
                 if (TenKH != "") TenKHtxt.BorderBrush = Brushes.Black;
-                else
-                {
-                    TenKHtxt.BorderBrush = Brushes.Red;
-                    return false;
-                }
+                else TenKHtxt.BorderBrush = Brushes.Red;
 
                 if (SDT != "") SDTtxt.BorderBrush = Brushes.Black;
-                else
-                {
-                    SDTtxt.BorderBrush = Brushes.Red;
-                    return false;
-                }
+                else SDTtxt.BorderBrush = Brushes.Red;
 
                 if (CMND != "") CMNDtxt.BorderBrush = Brushes.Black;
-                else
-                {
-                    CMNDtxt.BorderBrush = Brushes.Red;
-                    return false;
-                }
+                else CMNDtxt.BorderBrush = Brushes.Red;
 
                 if (DiaChi != "") DiaChitxt.BorderBrush = Brushes.Black;
-                else
-                {
-                    DiaChitxt.BorderBrush = Brushes.Red;
-                    return false;
-
-                }
+                else DiaChitxt.BorderBrush = Brushes.Red;
 
                 if (LoaiKH != null) LoaiKHcb.BorderBrush = Brushes.Black;
-                else
-                {
-                    LoaiKHcb.BorderBrush = Brushes.Red;
-                    return false;
-                }
+                else LoaiKHcb.BorderBrush = Brushes.Red;
+
+                if (TenKH == "" || SDT == "" || DiaChi == "" || LoaiKH == null) return false;
 
                 return true;
             }, (p) =>
             {
-                int CheckExist = DataProvider.Ins.DB.khachhang.Where(x => x.TenKH == TenKH && x.SDT == SDT).Count();
+                int CheckExist = DataProvider.Ins.DB.khachhang.Where(x => x.TenKH == TenKH && x.CMND == CMND).Count();
+
+                //if (!CMND.All(char.IsDigit))
+                //{
+                //    warning.Text = "Số CCCD không được chứa chữ";
+                //} 
 
                 if (CheckExist == 0)
                 {
                     khachhang newObj = new khachhang();
                     newObj.TenKH = TenKH;
                     newObj.SDT = SDT;
-                    newObj.CMND =  Int32.Parse(CMND);
+                    newObj.CMND =  CMND;
                     newObj.LoaiKhach = LoaiKH;
+                    newObj.DiaChi = DiaChi;
 
                     DataProvider.Ins.DB.khachhang.Add(newObj);
                     DataProvider.Ins.DB.SaveChanges();

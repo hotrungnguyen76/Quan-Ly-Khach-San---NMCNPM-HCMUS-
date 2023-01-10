@@ -17,13 +17,16 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public phuthu()
         {
-            this.hoadon = new HashSet<hoadon>();
+            this.chitiethoadons = new HashSet<chitiethoadon>();
+            this.chitietphieuthues = new HashSet<chitietphieuthue>();
         }
     
-        public int MaPhuThu { get; set; }
+        public string LoaiPhuThu { get; set; }
         public Nullable<float> MucPhuThu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hoadon> hoadon { get; set; }
+        public virtual ICollection<chitiethoadon> chitiethoadons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chitietphieuthue> chitietphieuthues { get; set; }
     }
 }

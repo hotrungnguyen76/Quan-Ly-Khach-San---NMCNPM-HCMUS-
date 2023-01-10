@@ -17,7 +17,7 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public loaiphong()
         {
-            this.phong = new HashSet<phong>();
+            this.phongs = new HashSet<phong>();
         }
     
         public string LoaiPhong1 { get; set; }
@@ -26,6 +26,6 @@ namespace QuanLyKhachSan.Models
     
         public virtual doanhthu doanhthu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<phong> phong { get; set; }
+        public virtual ICollection<phong> phongs { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace QuanLyKhachSan.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public phong()
         {
-            this.hoadon = new HashSet<hoadon>();
-            this.phieuthue = new HashSet<phieuthue>();
+            this.chitiethoadons = new HashSet<chitiethoadon>();
+            this.chitietphieuthues = new HashSet<chitietphieuthue>();
         }
     
         public int MaPhong { get; set; }
@@ -26,10 +26,10 @@ namespace QuanLyKhachSan.Models
         public string LoaiPhong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hoadon> hoadon { get; set; }
+        public virtual ICollection<chitiethoadon> chitiethoadons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chitietphieuthue> chitietphieuthues { get; set; }
         public virtual loaiphong loaiphong1 { get; set; }
         public virtual matdosudung matdosudung { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<phieuthue> phieuthue { get; set; }
     }
 }
